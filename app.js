@@ -6,13 +6,18 @@ const nunjucks = require('nunjucks');
 const locals = {
   title: 'An Example',
   people: [
-    {name: 'Gandalf'},
-    {name: 'Frodo'},
-    {name: 'Hermione'}
-  ]
+    {name: 'Gandalf', location: 'middle earth'},
+    {name: 'Frodo', location: 'the shire'},
+    {name: 'Hermione', location: 'hogwarts'}
+  ],
+  // location: [
+  //   {name: 'middle earth'},
+  //   {name: 'the shire'},
+  //   {name: 'hogwarts'}
+  // ]
 }
 
-const people = [{name: 'Doris'}, {name: 'Ranjeet'}, {name: 'JS Code CRUSHERS!!'}];
+//const people = [{name: 'Doris'}, {name: 'Ranjeet'}, {name: 'JS Code CRUSHERS!!'}];
 
 app.set('view engine', 'html'); // have res.render work with html files
 app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
@@ -45,6 +50,7 @@ app.get("/news", function (req, res) {
 
 //"index" is the file path that res.renders looks for (either an abs path or a path relative to the views folder)
 app.get("/", function (req, res) {
-  // res.send('Welcome!');
-  res.render( 'index', {title: 'Hall of Fame', people: people} );
+  //res.send('Welcome!');
+  //res.render( 'index', {title: 'Hall of Fame', people: people} );
+  res.render( 'index', {title: locals.title, people: locals.people} );
 })
