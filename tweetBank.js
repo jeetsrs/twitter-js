@@ -9,10 +9,12 @@ function add(name, content) {
 }
 
 function list() {
+  //Note: these are from lodash
   return _.cloneDeep(data);
 }
 
 function find(properties) {
+  //Note: these are from lodash
   return _.cloneDeep(_.filter(data, properties));
 }
 
