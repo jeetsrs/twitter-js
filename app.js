@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const nunjucks = require('nunjucks');
 const routes = require('./routes');
 
+
 app.use(express.static('public'));
 
 const locals = {
