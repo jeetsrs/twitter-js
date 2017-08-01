@@ -1,6 +1,7 @@
 const express = require( 'express' );
 const app = express(); // creates an instance of an express application
-const volleyball = require("volleyball");
+const volleyball = require('volleyball');
+const morgan = require('morgan')
 const nunjucks = require('nunjucks');
 const routes = require('./routes');
 
@@ -46,6 +47,7 @@ app.listen(3000, function () {
 
 //NOTE: Logging (fancy logging) using Volleyball
 app.use(volleyball);
+//app.use(morgan('dev'));
 
 //NOTE: Custom getter for the /news folder
 // app.get("/news", function (req, res) {
@@ -60,4 +62,5 @@ app.use(volleyball);
 //   res.render( 'index', {title: locals.title, people: locals.people} );
 // })
 
+//put after the logger
 app.use('/', routes);

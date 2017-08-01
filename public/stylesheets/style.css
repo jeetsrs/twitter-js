@@ -30,8 +30,11 @@ li {
   margin-bottom: 10px;
 }
 
-.tweet {
+a {
   color: teal;
+}
+
+.tweet {
   margin-left: 10px;
 }
 
