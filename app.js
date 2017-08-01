@@ -2,6 +2,9 @@ const express = require( 'express' );
 const app = express(); // creates an instance of an express application
 const volleyball = require("volleyball");
 const nunjucks = require('nunjucks');
+const routes = require('./routes');
+
+app.use(express.static('public'));
 
 const locals = {
   title: 'An Example',
@@ -35,24 +38,26 @@ app.listen(3000, function () {
 })
 
 //custom logging
-app.use("/special/", function (req, res, next) {
-  console.log('You have reached the special area');
-  //next allows this to move to the next set of commands below
-  next();
-})
+// app.use("/special/", function (req, res, next) {
+//   console.log('You have reached the special area');
+//   //next allows this to move to the next set of commands below
+//   next();
+// })
 
 //NOTE: Logging (fancy logging) using Volleyball
 app.use(volleyball);
 
 //NOTE: Custom getter for the /news folder
-app.get("/news", function (req, res) {
-  res.send('Welcome to the news feed!');
-})
+// app.get("/news", function (req, res) {
+//   res.send('Welcome to the news feed!');
+// })
 
 
 //"index" is the file path that res.renders looks for (either an abs path or a path relative to the views folder)
-app.get("/", function (req, res) {
-  //res.send('Welcome!');
-  //res.render( 'index', {title: 'Hall of Fame', people: people} );
-  res.render( 'index', {title: locals.title, people: locals.people} );
-})
+// app.get("/", function (req, res) {
+//   //res.send('Welcome!');
+//   //res.render( 'index', {title: 'Hall of Fame', people: people} );
+//   res.render( 'index', {title: locals.title, people: locals.people} );
+// })
+
+app.use('/', routes);
