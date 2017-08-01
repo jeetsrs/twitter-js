@@ -1,4 +1,4 @@
-const express = require( 'express' );
+const express = require('express');
 const app = express(); // creates an instance of an express application
 const volleyball = require('volleyball');
 const morgan = require('morgan')
@@ -10,10 +10,18 @@ app.use(express.static('public'));
 
 const locals = {
   title: 'An Example',
-  people: [
-    {name: 'Gandalf', location: 'middle earth'},
-    {name: 'Frodo', location: 'the shire'},
-    {name: 'Hermione', location: 'hogwarts'}
+  people: [{
+      name: 'Gandalf',
+      location: 'middle earth'
+    },
+    {
+      name: 'Frodo',
+      location: 'the shire'
+    },
+    {
+      name: 'Hermione',
+      location: 'hogwarts'
+    }
   ],
   // location: [
   //   {name: 'middle earth'},
@@ -29,9 +37,11 @@ app.engine('html', nunjucks.render); // when giving html files to res.render, te
 nunjucks.configure('views'); // point nunjucks to the proper directory for templates
 
 //NOTE: set Nunjucks to not cache requests
-nunjucks.configure('views', {noCache: true});
+nunjucks.configure('views', {
+  noCache: true
+});
 nunjucks.render('index.html', locals, function (err, output) {
-    console.log(output);
+  console.log(output);
 });
 
 //NOTE: Our server listens on this port

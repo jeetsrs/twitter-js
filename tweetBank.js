@@ -61,4 +61,6 @@ let tmp = function (name) {
 
 
 // console.log(data);
-console.log(find({'name': 'Omri'}));
+console.log(find({
+  'name': 'Omri'
+}));

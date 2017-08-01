@@ -14,9 +14,11 @@
 //   res.render( 'index', {title: locals.title, people: locals.people} );
 // })
 
+
+// could use one line instead: const router = require('express').Router();
 const express = require('express');
 const router = express.Router();
-// could use one line instead: const router = require('express').Router();
+
 const tweetBank = require('../tweetBank');
 //use this to handle all static routes (in addition to the handlers below)
 const bodyParser = require('body-parser');
@@ -24,27 +26,44 @@ const bodyParser = require('body-parser');
 // create application/json parser
 var jsonParser = bodyParser.json();
 // create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var urlencodedParser = bodyParser.urlencoded({
+  extended: false
+})
 // parse application/x-www-form-urlencoded
-router.use(bodyParser.urlencoded({ extended: false }))
+router.use(bodyParser.urlencoded({
+  extended: false
+}))
 
 
 router.get('/users/:name', function (req, res) {
   //console.log(tweetBank.find({'name': req.params.name}));
-  let tweets = tweetBank.find({'name': req.params.name});
-  res.render( 'index', { tweets: tweets, showForm: true, showName: true, name: req.params.name} );
+  let tweets = tweetBank.find({
+    'name': req.params.name
+  });
+  res.render('index', {
+    tweets: tweets,
+    showForm: true,
+    showName: true,
+    name: req.params.name
+  });
 
 });
 
 router.get('/tweets/:id', function (req, res) {
   //console.log(tweetBank.find({'name': req.params.name}));
-  let tweets = tweetBank.find({'id': Number(req.params.id)});
+  let tweets = tweetBank.find({
+    'id': Number(req.params.id)
+  });
   console.log(tweets);
-  res.render( 'index', { tweets: tweets, showForm: true, showName: true} );
+  res.render('index', {
+    tweets: tweets,
+    showForm: true,
+    showName: true
+  });
 });
 
 
-router.post('/tweets', function(req, res) {
+router.post('/tweets', function (req, res) {
   var name = req.body.name;
   var text = req.body.text;
   tweetBank.add(name, text);
@@ -59,7 +78,10 @@ router.use('/', express.static('public'));
 
 router.get('/', function (req, res) {
   let tweets = tweetBank.list();
-  res.render( 'index', { tweets: tweets, showForm: true} );
+  res.render('index', {
+    tweets: tweets,
+    showForm: true
+  });
 });
 
 router.get('/*', function (req, res) {
