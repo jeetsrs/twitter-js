@@ -23,12 +23,13 @@ app.set('view engine', 'html'); // have res.render work with html files
 app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
 nunjucks.configure('views'); // point nunjucks to the proper directory for templates
 
-
+//NOTE: set Nunjucks to not cache requests
 nunjucks.configure('views', {noCache: true});
 nunjucks.render('index.html', locals, function (err, output) {
     console.log(output);
 });
 
+//NOTE: Our server listens on this port
 app.listen(3000, function () {
   console.log('server listening');
 })
@@ -40,9 +41,10 @@ app.use("/special/", function (req, res, next) {
   next();
 })
 
-//fancy logging
+//NOTE: Logging (fancy logging) using Volleyball
 app.use(volleyball);
 
+//NOTE: Custom getter for the /news folder
 app.get("/news", function (req, res) {
   res.send('Welcome to the news feed!');
 })
