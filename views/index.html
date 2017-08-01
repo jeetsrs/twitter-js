@@ -15,7 +15,7 @@
 
       <!-- display tweets here -->
       {% for tweet in tweets %}
-        <li><img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><span class='tweet'><b>{{tweet.name}}</b><br><span>{{tweet.content}}</span></span></li><br>
+        <li><img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><span class='tweet'><b><a href="/users/{{tweet.name}}">{{tweet.name}}</a></b><br><span><a href="/tweets/{{tweet.id}}">{{tweet.content}}</a></span></span></li><br>
       {% endfor %}
 
     </div>

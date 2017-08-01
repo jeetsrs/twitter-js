@@ -27,13 +27,18 @@ router.get('/', function (req, res) {
   res.render( 'index', { tweets: tweets } );
 });
 
-// router.get('/users/:name', function (req, res) {
-//   console.log(tweetBank.find({'name': req.params.name}));
-//   let tweets = tweetBank.find({'name': req.params.name});
-//   console.log(tweets);
-//   //res.render( 'index', { tweets: tweets } );
-// });
+router.get('/users/:name', function (req, res) {
+  //console.log(tweetBank.find({'name': req.params.name}));
+  let tweets = tweetBank.find({'name': req.params.name});
+  res.render( 'index', { tweets: tweets} );
+});
 
+router.get('/tweets/:id', function (req, res) {
+  //console.log(tweetBank.find({'name': req.params.name}));
+  let tweets = tweetBank.find({'id': Number(req.params.id)});
+  console.log(tweets);
+  res.render( 'index', { tweets: tweets} );
+});
 
 router.get('/news', function (req, res) {
   res.send('Welcome to the news feed!');
