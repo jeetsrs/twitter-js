@@ -8,5 +8,11 @@
     "start": "nodemon app.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "lodash": "^4.17.4",
+    "nunjucks": "^3.0.1",
+    "volleyball": "^1.4.1"
+  }
 }
